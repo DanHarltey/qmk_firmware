@@ -51,7 +51,7 @@ static void print_status_narrow(void) {
     if(no_lock_is_active()){
         oled_write_ln_P(PSTR("\n\nNLock\n\n\nLAYER"), false);
     } else{ 
-        oled_write_P(PSTR("\n\n\n\n\n\nLAYER"), false);
+        oled_write_P(PSTR("\n\n\n\n\nLAYER"), false);
     }
     // oled_write_ln_P(PSTR("MODE"), false);
     // oled_write_ln_P(PSTR(""), false);
