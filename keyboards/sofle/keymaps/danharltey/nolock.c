@@ -12,7 +12,7 @@ static uint32_t no_lock_callback(uint32_t trigger_time, void* cb_arg) {
 }
 
 bool no_lock_is_active(void) { 
-    return timer_token == INVALID_DEFERRED_TOKEN;
+    return timer_token != INVALID_DEFERRED_TOKEN;
 }
 
 void toggle_no_lock(void) {
