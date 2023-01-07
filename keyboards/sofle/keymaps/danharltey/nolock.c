@@ -11,11 +11,11 @@ static uint32_t no_lock_callback(uint32_t trigger_time, void* cb_arg) {
   return NO_LOCK_PRESS_INTERVAL;
 }
 
-bool no_lock_is_active() { 
+bool no_lock_is_active(void) { 
     return timer_token == INVALID_DEFERRED_TOKEN;
 }
 
-void toggle_no_lock() {
+void toggle_no_lock(void) {
     if (timer_token == INVALID_DEFERRED_TOKEN) {
         timer_token = defer_exec(NO_LOCK_PRESS_INTERVAL, no_lock_callback, NULL);
     }
