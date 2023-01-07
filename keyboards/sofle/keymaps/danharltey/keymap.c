@@ -49,9 +49,9 @@ static void print_status_narrow(void) {
     oled_write_P(PSTR("Dan H"), false);
     oled_write_ln_P(PSTR("\n\n"), false);
 
-    if(no_lock_is_active()){
+    if(no_lock_is_active()) {
         oled_write_ln_P(PSTR("NOLK"), false);
-        oled_write_ln_P(PSTR("\n\n\n"), false);
+        oled_write_ln_P(PSTR("\n\n"), false);
     } else{ 
         oled_write_P(PSTR("\n\n\n\n"), false);
     }
