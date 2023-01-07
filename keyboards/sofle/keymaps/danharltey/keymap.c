@@ -51,7 +51,7 @@ static void print_status_narrow(void) {
     if(no_lock_is_active()){
         oled_write_ln_P(PSTR("\n\nNLock\n\n\nLAYER"), false);
     } else{ 
-        oled_write_P(PSTR("\n\n\n\n\nLAYER"), false);
+        oled_write_P(PSTR("\n\n\n\n\n\nLAYER"), false);
     }
     // oled_write_ln_P(PSTR("MODE"), false);
     // oled_write_ln_P(PSTR(""), false);
@@ -67,7 +67,7 @@ static void print_status_narrow(void) {
     // oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR("Base"), false);
+            oled_write_P(PSTR("Base\n"), false);
             break;
         case _RAISE:
             oled_write_P(PSTR("Raise"), false);
@@ -76,7 +76,7 @@ static void print_status_narrow(void) {
             oled_write_P(PSTR("Lower"), false);
             break;
         case _ADJUST:
-            oled_write_P(PSTR("Adj"), false);
+            oled_write_P(PSTR("Adj\n"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
