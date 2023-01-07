@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
+#include "nolock.h"
 
 enum custom_keycodes {
     KC_NO_LOCK = SAFE_RANGE
 };
-
 
 enum sofle_layers {
     _QWERTY,
