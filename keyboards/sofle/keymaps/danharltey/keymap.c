@@ -50,7 +50,7 @@ static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("\n\n"), false);
 
     if(no_lock_is_active()){
-        oled_write_ln_P(PSTR("NOLK\n"), false);
+        oled_write_ln_P(PSTR("NOLK"), false);
         oled_write_ln_P(PSTR("\n\n\n"), false);
     } else{ 
         oled_write_P(PSTR("\n\n\n\n"), false);
@@ -79,6 +79,8 @@ static void print_status_narrow(void) {
     if(led_usb_state.caps_lock) {
         oled_write_P(PSTR("\n\n"), false);
         oled_write_ln_P(PSTR("CPSLK"), false);
+    } else {
+        oled_write_P(PSTR("\n\n\n"), false);
     }
 }
 
