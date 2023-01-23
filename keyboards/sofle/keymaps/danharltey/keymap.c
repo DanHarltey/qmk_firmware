@@ -41,7 +41,7 @@ static void render_logo(void) {
         0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0
     };
 
-    oled_write_P(qmk_logo, false);
+    oled_write_P(qmk_logo, no_lock_is_active());
 }
 
 static void print_status_narrow(void) {
@@ -76,11 +76,18 @@ static void print_status_narrow(void) {
     }
 
     led_t led_usb_state = host_keyboard_led_state();
-    if(led_usb_state.caps_lock) {
+
+    if(led_usb_state.num_lock) {
+        oled_write_P(PSTR("\n"), false);
+        oled_write_ln_P(PSTR("NUMLK"), false);
+    } else {
         oled_write_P(PSTR("\n\n"), false);
+    }
+
+    if(led_usb_state.caps_lock) {
         oled_write_ln_P(PSTR("CPSLK"), false);
     } else {
-        oled_write_P(PSTR("\n\n\n"), false);
+        oled_write_P(PSTR("\n"), false);
     }
 }
 
@@ -112,12 +119,27 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             tap_code(KC_VOLU);
         }
     } else if (index == 1) {
-        if (clockwise) {
-            tap_code(KC_MS_WH_UP);
-        } else {
-            tap_code(KC_MS_WH_DOWN);
+
+        switch (get_highest_layer(layer_state)) {
+            case _QWERTY:
+                if (clockwise) {
+                    tap_code(KC_MS_WH_UP);
+                } else {
+                    tap_code(KC_MS_WH_DOWN);
+                }
+                break;
+            case _RAISE:
+            case _LOWER:
+            case _ADJUST:
+            default:
+                if (clockwise) {
+                    tap_code(KC_MS_WH_LEFT);
+                } else {
+                    tap_code(KC_MS_WH_RIGHT);
+                }
         }
     }
+
     return true;
 }
 
