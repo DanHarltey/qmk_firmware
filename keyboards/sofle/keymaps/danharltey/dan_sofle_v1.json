@@ -172,7 +172,7 @@
       "LCTL(KC_X)",
       "LCTL(KC_C)",
       "LCTL(KC_V)",
-      "KC_NO",
+      "ANY(CW_TOGG)",
       "KC_TRNS",
       "KC_TRNS",
       "KC_INS",

@@ -7,7 +7,7 @@
 static deferred_token timer_token = INVALID_DEFERRED_TOKEN;
 
 static uint32_t no_lock_callback(uint32_t trigger_time, void* cb_arg) {
-  tap_code(KC_NUM_LOCK);
+  tap_code(KC_NO);
   return NO_LOCK_PRESS_INTERVAL;
 }
 
